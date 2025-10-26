@@ -4,11 +4,12 @@
 SYNC_DIR="$HOME/dotfiles"
 
 # Asegúrate de que exista
-mkdir -p "$SYNC_DIR/wezterm" "$SYNC_DIR/nvim" "$SYNC_DIR/fish"
+mkdir -p "$SYNC_DIR/wezterm" "$SYNC_DIR/nvim" "$SYNC_DIR/fish" "$SYNC_DIR/tmux"
 
 # Copiar archivos específicos
 cp /mnt/c/Users/bladi/.wezterm.lua "$SYNC_DIR/wezterm/wezterm.lua"
 cp -r ~/.config/nvim "$SYNC_DIR"
 cp -r ~/.config/fish "$SYNC_DIR"
+cp -r ~/.tmux.conf "$SYNC_DIR/tmux"
 
 echo "Configs sincronizadas con $SYNC_DIR"
