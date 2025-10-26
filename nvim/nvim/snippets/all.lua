@@ -1,0 +1,15 @@
+-- local ls = require("luasnip")
+-- local s  = ls.snippet
+-- local i  = ls.insert_node
+-- local t  = ls.text_node
+-- local rep = require("luasnip.extras").rep  -- función para repetir texto
+--
+-- -- Definir snippets para LaTeX (filetype = "tex")
+-- ls.add_snippets("all", {
+--   s("env", {  -- trigger = "env"
+--     t("\\begin{"), i(1, "entorno"), t({"}", "\t"}),  -- comienza \begin{entorno}
+--     i(2, "contenido"),                             -- zona de contenido
+--     t({"", "\\end{"}), rep(1), t({"}"}),           -- cierra con \end{entorno}
+--   }),
+--   -- se pueden añadir más snippets aquí...
+-- })
