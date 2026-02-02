@@ -19,8 +19,11 @@ o.expandtab = true
 o.smartindent = true
 g.mapleader = " "
 
+-- o.ttimeout = true
+-- o.ttimeoutlen = 0
+
 local four_space_filetypes = {
-  "python", "c", "cpp", "rust", "go", "java"
+  "lua", "python", "c", "cpp", "rust", "go", "java"
 }
 
 vim.api.nvim_create_autocmd("FileType", {

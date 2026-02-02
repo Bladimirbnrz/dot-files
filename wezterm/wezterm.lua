@@ -38,12 +38,12 @@ else
 end
 
 config.keys = {
-  -- Uncomment if the bindings (keymaps) do not work natively with fish 
-  -- {
-  --   key = 'Space',
-  --   mods = 'SHIFT',
-  --   action = wezterm.action.SendString('\x1b[99~'),
-  -- },
+  -- comment if the bindings (keymaps) do work natively with fish 
+  {
+    key = 'Space',
+    mods = 'SHIFT',
+    action = wezterm.action.SendKey { key="y", mods="CTRL" },
+  },
   --
   -- Uncommenting this would be good if you don't plan on using tmux
   --
@@ -74,7 +74,7 @@ config.mouse_bindings ={
 	},
 }
 
-config.enable_kitty_keyboard = true 
--- config.allow_win32_input_mode = false
+-- comment if the bindings (keymaps) do work natively with fish 
+-- config.enable_kitty_keyboard = true 
 
 return config

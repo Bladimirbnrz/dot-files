@@ -21,16 +21,15 @@ set -gx COLORTERM truecolor
 set -gx TERM xterm-256color
 set -gx CROSSTERM_FORCE_TRUE_COLOR 1
 
-# set -Ua fish_features no-query-term
 
 if status is-interactive
   # Commands to run in interactive sessions can go here
 
   # <shift><space> to accept-autosuggestion
   function fish_user_key_bindings
-    # you should use the first option if “enable_kitty_keyboard = true” cause you any problems.
-    # bind \e\[99~ accept-autosuggestion
-    bind shift-space accept-autosuggestion
+    # you shouldn't use the first option if “enable_kitty_keyboard = true” cause you any problems.
+    # bind shift-space accept-autosuggestion
+    bind \cy accept-autosuggestion
   end
 
   set -g theme_display_date no
