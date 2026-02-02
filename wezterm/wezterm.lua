@@ -38,7 +38,7 @@ else
 end
 
 config.keys = {
-  -- Uncomment if the bindings (keymaps) do not work natively 
+  -- Uncomment if the bindings (keymaps) do not work natively with fish 
   -- {
   --   key = 'Space',
   --   mods = 'SHIFT',
@@ -73,7 +73,8 @@ config.mouse_bindings ={
 		end),
 	},
 }
-config.allow_win32_input_mode = true
+
 config.enable_kitty_keyboard = true 
+-- config.allow_win32_input_mode = false
 
 return config

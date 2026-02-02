@@ -1,5 +1,5 @@
 # you can choose anyone of below to add Homebrew to your path
-###
+# {{{
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
 
 # if test -d /home/linuxbrew/.linuxbrew
@@ -8,19 +8,27 @@
 
 fish_add_path /home/linuxbrew/.linuxbrew/bin
 fish_add_path /home/linuxbrew/.linuxbrew/sbin
-###
+# }}}
+
+fish_add_path /home/barron/.cargo/bin/
+
+set -x EDITOR nvim
+set -x VISUAL nvim
 
 set -gx TMUX_CONFIG_DIR "$HOME/.config/tmux"
+
 set -gx COLORTERM truecolor
 set -gx TERM xterm-256color
 set -gx CROSSTERM_FORCE_TRUE_COLOR 1
 
+# set -Ua fish_features no-query-term
 
 if status is-interactive
   # Commands to run in interactive sessions can go here
 
   # <shift><space> to accept-autosuggestion
   function fish_user_key_bindings
+    # you should use the first option if “enable_kitty_keyboard = true” cause you any problems.
     # bind \e\[99~ accept-autosuggestion
     bind shift-space accept-autosuggestion
   end
