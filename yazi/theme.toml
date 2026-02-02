@@ -1,0 +1,64 @@
+
+[icon]
+
+dirs = [
+    { name = ".config", text = "", fg = "#3B9953" },
+    { name = ".git", text = "", fg = "#FF614C" },
+]
+
+# Iconos por extensión
+exts = [
+  # Languages
+  { name = "py",      text = "", fg = "#FFAE30" },
+  { name = "js",      text = "", fg = "#E5C07B" },
+  { name = "ts",      text = "", fg = "#61AFEF" },
+  { name = "rs",      text = "", fg = "#D19A66" },
+  { name = "c",       text = "", fg = "#56B6C2" },
+  { name = "cpp",     text = "", fg = "#56B6C2" },
+  { name = "vim",     text = "", fg = "#51A0CF" },
+  { name = "lua",     text = "", fg = "#51A0CF" },
+  { name = "sh",      text = "", fg = "#98C379" },
+  { name = "md",      text = "", fg = "#E5C07B" },
+  { name = "json",    text = "", fg = "#FFAE30" },
+  { name = "yaml",    text = "", fg = "#56B6C2" },
+  { name = "yml",     text = "", fg = "#56B6C2" },
+  { name = "html",    text = "", fg = "#E06C75" },
+  { name = "css",     text = "", fg = "#61AFEF" },
+  { name = "f90",     text = "󱈚", fg = "#7100C4" },
+  { name = "toml",    text = "", fg = "#993F34" },
+
+
+  { name = "png",     text = "", fg = "#4E0E94" },
+  { name = "jpg",     text = "", fg = "#4E0E94" },
+  { name = "mp3",     text = "", fg = "#E5C07B" },
+  { name = "mp4",     text = "", fg = "#E5C07B" },
+
+  { name = "pdf",     text = "", fg = "#FF614C" },
+  { name = "tex",     text = "", fg = "#1BC91A" },
+  { name = "txt",     text = "", fg = "#B3B3B3" },
+
+  { name = "zip",     text = "", fg = "#E06C75" },
+
+  
+  { name = "log",     text = "", fg = "#FFFFFF" },
+  { name = "out",     text = "", fg = "#FF614C" },
+  { name = "fish",    text = "", fg = "#3B9953" },
+  { name = "conf",    text = "", fg = "#DDD8BB" },
+]
+
+# Iconos por nombre de archivo (config, dotfiles)
+files = [
+  { name = ".bashrc",        text = "", fg = "#3B9953" },
+  { name = "Makefile",       text = "", fg = "#98C379" },
+  { name = "Dockerfile",     text = "", fg = "#61AFEF" },
+  { name = "tmux.conf",      text = "", fg = "#26A825" },
+  { name = ".gitignore",     text = "", fg = "#FF614C" },
+]
+
+prepend_conds = [
+  { if = "dir", text = "", fg = "#7EB3C9" },
+  { if = "!(dir | link)", text = "", fg = "#7F848E" }
+]
+
+# [flavor]
+# dark = "kanagawa-dragon"
