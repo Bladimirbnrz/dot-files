@@ -1,4 +1,8 @@
 [plugin]
+# for this, you should install piper yazi plugin. Run
+# ya pkg add yazi-rs/plugins:piper
+# and install bat
+# brew install bat
 prepend_previewers = [
   { url = "*/",  run = 'piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"' },
 
