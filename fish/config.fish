@@ -57,6 +57,6 @@ end
 
 zoxide init fish | source
 
-# if not set -q TMUX
-# exec tmux
-# end
+if not set -q TMUX
+  exec tmux
+end
