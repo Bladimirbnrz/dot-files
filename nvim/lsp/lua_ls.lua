@@ -1,23 +1,36 @@
+local root_markers1 = {
+  '.emmyrc.json',
+  '.luarc.json',
+  '.luarc.jsonc',
+}
+local root_markers2 = {
+  '.luacheckrc',
+  '.stylua.toml',
+  'stylua.toml',
+  'selene.toml',
+  'selene.yml',
+}
+
+---@type vim.lsp.Config
 return {
   cmd = { 'lua-language-server' },
-  root_markers = {
-    '.luarc.json',
-    '.luarc.jsonc',
-    '.luacheckrc',
-    '.stylua.toml',
-    'stylua.toml',
-    'selene.toml',
-    'selene.yml',
-    '.git',
-  },
   filetypes = { 'lua' },
+  root_markers = vim.fn.has('nvim-0.11.3') == 1 and { root_markers1, root_markers2, { '.git' } }
+    or vim.list_extend(vim.list_extend(root_markers1, root_markers2), { '.git' }),
   settings = {
+    -- diagnostics = {
+    --     global = {"vim"},
+    -- },
     Lua = {
-      diagnostics = { 
-        globals = { "vim" }, 
-        disable = {"missing-fields"},
+      diagnostics = {
+      global = {"vim"},
+      disable = { "missing-fields" },
       },
-      workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+      workspace = {
+      library = vim.api.nvim_get_runtime_file("", true),
+    },
+      codeLens = { enable = true },
+      hint = { enable = true, semicolon = 'Disable' },
     },
   },
 }

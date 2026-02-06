@@ -1,5 +1,5 @@
 -- Auxiliar function to try to open Oil-Preview several times silently
-local function try_open_preview(max_retries, delay_ms)
+function Try_open_preview(max_retries, delay_ms)
   max_retries = max_retries or 5
   delay_ms = delay_ms or 50
 
@@ -15,7 +15,8 @@ local function try_open_preview(max_retries, delay_ms)
       -- local variable to check if the preview opened
       local has_preview = false
       for _, w in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-        if vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(w), "filetype") == "oilpreview" then
+        local buf = vim.api.nvim_win_get_buf(w)
+        if vim.bo[buf].filetype == "oilpreview" then
           has_preview = true
           break
         end
@@ -35,12 +36,13 @@ end
 vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
   callback = function(ev)
-    if vim.api.nvim_buf_get_option(ev.buf, "filetype") == "oil"
+    -- if vim.api.nvim_buf_get_option(ev.buf, "filetype") == "oil"
+    if vim.bo[ev.buf].filetype == "oil"
        and vim.env.NVIM_OIL_PREVIEW == "1"
     then
       -- Will try opening preview six times every ten ms 
       -- You can modify the number of attpemps or the interval between them if it does not working
-      try_open_preview(6, 10)
+      Try_open_preview(6, 10)
       vim.env.NVIM_OIL_PREVIEW = nil
     end
   end,

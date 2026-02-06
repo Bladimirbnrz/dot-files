@@ -4,14 +4,15 @@ return {
   -- optional: provides snippets for the snippet source
   -- use a release tag to download pre-built binaries
   version = '1.*',
-  dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+  -- dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    snippets = { preset = "luasnip"},
+    -- snippets = { preset = "luasnip"},
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      -- default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "buffer" },
     },
     keymap = {
       preset = 'default',

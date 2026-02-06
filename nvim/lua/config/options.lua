@@ -1,5 +1,4 @@
 local o = vim.opt
-local cmd = vim.cmd
 local g = vim.g
 
 o.number = true
@@ -17,13 +16,13 @@ o.softtabstop = 2
 o.tabstop = 2
 o.expandtab = true
 o.smartindent = true
+
 g.mapleader = " "
 
--- o.ttimeout = true
--- o.ttimeoutlen = 0
+o.updatetime = 400
 
 local four_space_filetypes = {
-  "lua", "python", "c", "cpp", "rust", "go", "java"
+    "python", "c", "cpp", "rust", "go", "java"
 }
 
 vim.api.nvim_create_autocmd("FileType", {

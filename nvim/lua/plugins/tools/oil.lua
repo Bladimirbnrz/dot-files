@@ -10,68 +10,33 @@ return {
   },
   config = function()
     vim.o.splitright = true
-    require("oil").setup({
-      default_file_explores = true,
 
-      columns = {
-        "icon",
-        -- "size",
-      },
+    require("oil").setup({
+      default_file_explorer = true,
+
       keymaps = {
-        ["g?"] = "actions.show_help",
-        ["<CR>"] = "actions.select",
-        ["<C-s>"] = { "actions.select", opts = { vertical = true }, desc = "Open in vertical split" },
-        ["<C-v>"] = { "actions.select", opts = { horizontal = true }, desc = "Open in horizontal split" },
-        ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open in new tab" },
-        ["<C-p>"] = "actions.preview",
-        ["<C-c>"] = "actions.close",
-        ["<C-r>"] = "actions.refresh",
-        ["-"] = "actions.parent",
-        ["_"] = "actions.open_cwd",
-        ["`"] = "actions.cd",
-        ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
-        ["gs"] = "actions.change_sort",
-        ["gx"] = "actions.open_external",
-        ["g."] = "actions.toggle_hidden",
-        ["g\\"] = "actions.toggle_trash",
-        -- Window navigation without conflicts
-        ["<C-h>"] = function()
-          vim.cmd("wincmd h")
-        end,
-        ["<C-j>"] = function()
-          vim.cmd("wincmd j")
-        end,
-        ["<C-k>"] = function()
-          vim.cmd("wincmd k")
-        end,
-        ["<C-l>"] = function()
-          vim.cmd("wincmd l")
-        end,
+        ["°"] = { "actions.select", opts = { horizontal = true }, desc = "Open in vertical split" },
+        ["|"] = { "actions.select", opts = { vertical = true }, desc = "Open in horizontal split" },
+
         -- Quick quit
         ["q"] = "actions.close",
-      },
 
-      -- Set to false to disable all of the above keymaps
-      use_default_keymaps = true,
+        --to see the more default keymaps, "g?" when you're in Oil
+      },
 
       view_options = {
         -- Show files and directories that start with "." by default
         show_hidden = true,
         -- This function defines what is considered a "hidden" file
-        is_hidden_file = function(name, bufnr)
+        is_hidden_file = function(name)
           return vim.startswith(name, ".")
         end,
         -- This function defines what will never be shown, even when `show_hidden` is set
-        is_always_hidden = function(name, bufnr)
+        -- is_always_hidden = function(name, bufnr)
+        is_always_hidden = function(name)
           return name == ".." or name == ".git"
         end,
-        natural_order = true,
-        case_insensitive = false,
-        sort = {
-          -- sort order can be "asc" or "desc"
-          { "type", "asc" },
-          { "name", "asc" },
-        },
+
       },
       float = {
         -- Padding around the floating window
@@ -82,47 +47,13 @@ return {
         win_options = {
           winblend = 0,
         },
-        -- preview_split: Split direction: "auto", "left", "right", "above", "below".
         preview_split = "right",
-        -- This is the config that will be passed to nvim_open_win.
-        -- Change values here to customize the layout
-        override = function(conf)
-          return conf
-        end,
-      },
-      preview_win = {
-        -- width = 0.2,
-        -- Whether the preview window is automatically updated when the cursor is moved
-        update_on_cursor_moved = true,
-        -- How to open the preview window "load"|"scratch"|"fast_scratch"
-        preview_method = "fast_scratch",
-        -- Window-local options to use for preview window buffers
-        win_options = {
-          winblend = 0,
-        },
       },
       confirmation = {
-        width = 0.2,
+        width = 0.3,
+        border = "single",
       },
-      -- Configuration for the floating progress window
-      progress = {
-        max_width = 0.9,
-        min_width = { 40, 0.4 },
-        width = nil,
-        max_height = { 10, 0.9 },
-        min_height = { 5, 0.1 },
-        height = nil,
-        border = "rounded",
-        minimized_border = "none",
-        win_options = {
-          winblend = 0,
-        },
-      },
-
-      -- Configuration for the floating SSH window
-      ssh = {
-        border = "rounded",
-      },
+      -- to see the more defaults, go to the URL
     })
     -- Custom autocmds for Oil
     vim.api.nvim_create_autocmd("FileType", {

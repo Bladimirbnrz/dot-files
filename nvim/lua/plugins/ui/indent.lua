@@ -1,6 +1,6 @@
 -- > Format for indent lines
 return{
-    "nvimdev/indentmini.nvim", 
+    "nvimdev/indentmini.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
         require("indentmini").setup({

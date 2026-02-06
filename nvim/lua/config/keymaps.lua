@@ -35,7 +35,7 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
 
-function OpenOilFloatHere()
+local function OpenOilFloatHere()
   if vim.bo.filetype == "oil" then
     return
   end
@@ -44,14 +44,15 @@ function OpenOilFloatHere()
   local cwd = vim.fn.expand("%:p:h")
 
   oil.open_float(cwd)
-  vim.defer_fn(function()
-    local seq = vim.api.nvim_replace_termcodes("<C-p>", true, false, true)
-    vim.api.nvim_feedkeys(seq, 'm', false)
-  end, 200)
+  Try_open_preview(6, 20)
+  -- vim.defer_fn(function()
+  --   local seq = vim.api.nvim_replace_termcodes("<C-p>", true, false, true)
+  --   vim.api.nvim_feedkeys(seq, 'm', false)
+  -- end, 200)
 end
 
 
-function GlobalOpenOil()
+local function GlobalOpenOil()
   if vim.bo.filetype == "oil" then
     return
   end

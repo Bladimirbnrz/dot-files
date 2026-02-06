@@ -22,6 +22,6 @@ require("lazy").setup({
     { import = "plugins.ui" },
     { import = "plugins.tools" },
     { import = "plugins.lsp" },
-    ui = { border = rouded },
+    ui = { border = "single" },
 })
 
