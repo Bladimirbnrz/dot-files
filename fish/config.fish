@@ -12,6 +12,8 @@ fish_add_path /home/linuxbrew/.linuxbrew/sbin
 
 fish_add_path /home/barron/.cargo/bin/
 
+set PATH $PATH /home/barron/.local/bin
+
 set -x EDITOR nvim
 set -x VISUAL nvim
 
@@ -21,6 +23,20 @@ set -gx COLORTERM truecolor
 set -gx TERM xterm-256color
 set -gx CROSSTERM_FORCE_TRUE_COLOR 1
 
+function fish_title
+  # Si hay un comando ejecutándose, mostramos el comando
+  set -l command (status current-command)
+  if test "$command" = "fish"
+    # Si no hay comando (estás en el prompt), muestra el nombre de la carpeta
+    echo "/"(basename (pwd))
+  else if test "$command" = "v"  
+    or test "$command" = "nvim"
+    echo "nvim" 
+  else
+    # Si estás en nvim, yazi, etc., muestra eso
+    echo $command
+  end
+end
 
 if status is-interactive
   # Commands to run in interactive sessions can go here
@@ -47,6 +63,7 @@ if status is-interactive
   alias cr='clear'
   alias py='python3'
   alias upy="/usr/bin/python3"
+  alias gf='fcompile'
   # alias v='nvim'
   alias v='openNvim'
   alias act='source venv/bin/activate.fish'
@@ -57,6 +74,10 @@ end
 
 zoxide init fish | source
 
-if not set -q TMUX
-  exec tmux
-end
+# if set -q TMUX
+#     # Forzar la identificación de WezTerm si estamos en tmux
+#     set -gx TERM_PROGRAM WezTerm
+# end
+# if not set -q TMUX
+#   exec tmux
+# end
