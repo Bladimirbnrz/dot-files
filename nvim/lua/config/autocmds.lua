@@ -38,9 +38,9 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   callback = function(ev)
     -- if vim.api.nvim_buf_get_option(ev.buf, "filetype") == "oil"
     if vim.bo[ev.buf].filetype == "oil"
-       and vim.env.NVIM_OIL_PREVIEW == "1"
+        and vim.env.NVIM_OIL_PREVIEW == "1"
     then
-      -- Will try opening preview six times every ten ms 
+      -- Will try opening preview six times every ten ms
       -- You can modify the number of attpemps or the interval between them if it does not working
       Try_open_preview(6, 10)
       vim.env.NVIM_OIL_PREVIEW = nil
@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   end,
 })
 
--- Only try to open Oil-Preview once, but silently, just in case the function above does not work 
+-- Only try to open Oil-Preview once, but silently, just in case the function above does not work
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "oil",
 --   callback = function()

@@ -8,7 +8,7 @@ return {
     local tools = {
       "ruff",
       "pyright",
-      "lua-language-server"
+      "lua-language-server",
     }
 
     mason_registry.refresh(function()
