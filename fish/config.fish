@@ -63,6 +63,7 @@ if status is-interactive
   alias cr='clear'
   alias py='python3'
   alias upy="/usr/bin/python3"
+  alias upip="/usr/bin/pip3"
   alias gf='fcompile'
   # alias v='nvim'
   alias v='openNvim'

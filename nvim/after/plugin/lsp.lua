@@ -49,6 +49,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
+vim.lsp.enable("texlab")

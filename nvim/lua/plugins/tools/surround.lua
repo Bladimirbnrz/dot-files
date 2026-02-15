@@ -6,10 +6,10 @@ return {
     -- Disable all built-in keymaps; you manage keymaps in your keymaps.lua
     require("nvim-surround").setup({
       keymaps = {
-        insert = false,      -- without keymaps
-        insert_line = false, -- without keymaps
+        insert = false,      -- there are no keymaps declared in keymaps.lua
+        insert_line = false, -- there are no keymaps declared in keymaps.lua
         normal = false,
-        normal_line = false, -- without keymaps
+        normal_line = false, -- there are no keymaps declared in keymaps.lua
         normal_cur = false,
         normal_cur_line = false,
         visual = false,
