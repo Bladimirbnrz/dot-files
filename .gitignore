@@ -1,2 +1,3 @@
 sync_dotfiles.sh
 tmux/plugins/
+nvim/node_modules
