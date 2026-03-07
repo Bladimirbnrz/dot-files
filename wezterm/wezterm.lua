@@ -2,7 +2,7 @@ local wezterm = require('wezterm')
 local act = wezterm.action
 
 local config = wezterm.config_builder()
-
+-- wezterm.log_info("Config?")
 config.color_scheme = 'kanagawabones'
 config.font = wezterm.font 'IosevkaTerm Nerd Font'
 config.font_size = 14
