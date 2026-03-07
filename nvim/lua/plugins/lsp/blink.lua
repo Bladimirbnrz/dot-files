@@ -9,33 +9,73 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    -- snippets = { preset = "luasnip"},
     sources = {
-      -- default = { "lsp", "path", "snippets", "buffer" },
-      default = { "lsp", "buffer" },
+      default = { "lsp", "buffer", "path" },
     },
     keymap = {
-      preset = 'default',
-      ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
-      ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+      preset = 'none', -- or set to default for default keymaps
+
+      ['<Tab>'] = { 'select_next', 'fallback' },
+      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+
+      -- to move through snipppet's placeholders
+      ['<C-n>'] = { 'snippet_forward', 'fallback' },
+      ['<C-p>'] = { 'snippet_backward', 'fallback' },
+
+      -- accept with CR
       ['<CR>'] = { 'accept', 'fallback' },
-      -- ['<Up>'] = { 'snippet_backward' },
-      -- ['<Down>'] = { 'snippet_forward' },
+
+      -- accept with shift space (you can enable both of accept-keymap)
+      --------> for this, you need to configure .wezterm.lua or similar because shift space is not valid
+      -- ['<C-y>'] = { "accept", "fallback" },
+
+      ['<C-space>'] = { 'cancel', 'hide', 'show', 'fallback' }
+
     },
-    -- (Default) Only show the documentation popup when manually triggered
     completion = {
+      list = {
+        selection = { auto_insert = false }
+      },
       menu = {
         border = "single",
         winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection",
       },
+
+      -- enable ghost_text
+      ghost_text = {
+        -- enabled = true,
+        enabled = function()
+          local excluded_sources = {
+            snippets = true,
+            buffer = true,
+          }
+
+          local item = require("blink.cmp").get_selected_item()
+          if not item then
+            return false
+          end
+
+          if excluded_sources[item.source_id] then
+            return false
+          end
+
+          return true
+        end,
+
+        show_without_selection = false,
+        -- show_without_menu = false,
+      },
+
       documentation = {
         auto_show = true,
+        auto_show_delay_ms = 500,
         window = {
           border = "rounded",
           winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder",
         },
       }
     },
+
     appearance = {
       nerd_font_variant = "normal",
       kind_icons = {
@@ -67,6 +107,7 @@ return {
       },
     },
   },
+
   opts_extend = { "sources.default" },
   config = function(_, opts)
     require("blink-cmp").setup(opts)

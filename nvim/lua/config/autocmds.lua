@@ -1,3 +1,15 @@
+--========= Update filename =========--
+
+vim.api.nvim_create_augroup("TitleUpdate", { clear = true })
+vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
+  group = "TitleUpdate",
+  callback = function()
+    vim.o.titlestring = vim.fn.expand("%:t")
+  end,
+})
+
+--========= Auto open Oil-Preview on start =========--
+
 -- Auxiliar function to try to open Oil-Preview several times silently
 function Try_open_preview(max_retries, delay_ms)
   max_retries = max_retries or 5

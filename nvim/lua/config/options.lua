@@ -1,6 +1,9 @@
 local o = vim.opt
 local g = vim.g
 
+-- vim.opt.spell = true
+-- vim.opt.spelllang = { "es", "en" }
+
 o.number = true
 o.relativenumber = true
 o.showmode = false
@@ -19,18 +22,7 @@ g.mapleader = " "
 g.maplocalleader = ","
 
 o.updatetime = 500
-o.title = true
-
-vim.api.nvim_create_augroup("TitleUpdate", { clear = true })
-vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
-  group = "TitleUpdate",
-  callback = function()
-    vim.o.titlestring = vim.fn.expand("%:t")
-  end,
-})
-
-
-
+o.title = true -----> nvim manages the buffer name, more in autocmds.lua
 
 
 local four_space_filetypes = {
