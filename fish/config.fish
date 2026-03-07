@@ -1,3 +1,8 @@
+# load pyenv in path
+pyenv init - fish | source
+
+set PATH $PATH /home/barron/.local/bin
+
 # you can choose anyone of below to add Homebrew to your path
 # {{{
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
@@ -6,13 +11,13 @@
 #     /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 # end
 
-fish_add_path /home/linuxbrew/.linuxbrew/bin
-fish_add_path /home/linuxbrew/.linuxbrew/sbin
+fish_add_path -a /home/linuxbrew/.linuxbrew/bin
+fish_add_path -a /home/linuxbrew/.linuxbrew/sbin
 # }}}
 
 fish_add_path /home/barron/.cargo/bin/
 
-set PATH $PATH /home/barron/.local/bin
+
 
 set -x EDITOR nvim
 set -x VISUAL nvim
@@ -57,17 +62,18 @@ if status is-interactive
   # set -g theme_color_scheme zenburn 
   set -g theme_color_scheme nord
   set -x VIRTUAL_ENV_DISABLE_PROMPT 1
+  set -gx VIRTUAL_ENV_PROMPT (basename (pwd))
+  set -g theme_display_virtualenv yes 
 
   alias ls='eza --icons --group-directories-first --color=always'
   alias ok='okular'
   alias cr='clear'
   alias py='python3'
   alias upy="/usr/bin/python3"
-  alias upip="/usr/bin/pip3"
   alias gf='fcompile'
   # alias v='nvim'
   alias v='openNvim'
-  alias act='source venv/bin/activate.fish'
+  alias act='source .venv/bin/activate.fish'
   alias venvCreate='python3 -m venv venv'
   alias dact='deactivate'
   alias venvInstall='pip install --no-index --find-links=~/.py_packages/'
@@ -75,10 +81,6 @@ end
 
 zoxide init fish | source
 
-# if set -q TMUX
-#     # Forzar la identificación de WezTerm si estamos en tmux
-#     set -gx TERM_PROGRAM WezTerm
-# end
 # if not set -q TMUX
 #   exec tmux
 # end
