@@ -1,0 +1,32 @@
+{
+    "section": {
+        "prefix": ["section", "\\section"],
+        "body": ["\\section{$1}"],
+        "description": "Section"
+    },
+    "subsection": {
+        "prefix": ["subsection", "\\subsection"],
+        "body": ["\\subsection{$1}"],
+        "description": "Subsection"
+    },
+    "subsubsection": {
+        "prefix": ["subsubsection", "\\subsubsection"],
+        "body": ["\\subsubsection{$1}"],
+        "description": "Subsubsection"
+    },
+    "usection": {
+        "prefix": ["usection", "\\usection"],
+        "body": ["\\usection{$1}"],
+        "description": "No-Index Section"
+    },
+    "usubsection": {
+        "prefix": ["usubsection", "\\usubsection"],
+        "body": ["\\usubsection{$1}"],
+        "description": "No-Index Subsection"
+    },
+    "usubsubsection": {
+        "prefix": ["usubsubsection", "\\usubsubsection"],
+        "body": ["\\usubsubsection{$1}"],
+        "description": "No-Index Subsubsection"
+    }
+}

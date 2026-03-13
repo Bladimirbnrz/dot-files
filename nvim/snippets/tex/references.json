@@ -1,0 +1,47 @@
+{
+    "ref": {
+        "prefix": ["\\ref"],
+        "body": ["\\ref{$1}"],
+        "description": "Reference"
+    },
+    "eqref": {
+        "prefix": ["\\eqref"],
+        "body": ["\\eqref{$1}"],
+        "description": "Equation reference"
+    },
+    "url": {
+        "prefix": ["\\url"],
+        "body": ["\\url{$1}"],
+        "description": "URL"
+    },
+    "cite": {
+        "prefix": ["\\cite"],
+        "body": ["\\cite{$1}"],
+        "description": "Citation"
+    },
+    "pageref": {
+        "prefix": ["\\pageref"],
+        "body": ["\\pageref{$1}"],
+        "description": "Page reference"
+    },
+    "label": {
+        "prefix": ["\\label"],
+        "body": ["\\label{$1}"],
+        "description": "Label"
+    },
+    "fullcite": {
+        "prefix": ["\\fullcite"],
+        "body": ["\\fullcite{$1}"],
+        "description": "Full citation"
+    },
+    "autocite": {
+        "prefix": ["\\autocite"],
+        "body": ["\\autocite{$1}"],
+        "description": "Auto citation"
+    },
+    "parencite": {
+        "prefix": ["\\parencite"],
+        "body": ["\\parencite{$1}"],
+        "description": "Parenthetical citation"
+    }
+}

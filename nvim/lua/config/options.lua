@@ -26,7 +26,7 @@ o.title = true -----> nvim manages the buffer name, more in autocmds.lua
 
 
 local four_space_filetypes = {
-  "python", "c", "cpp", "rust", "go", "java", "fortran"
+  "python", "c", "cpp", "rust", "go", "java", "fortran", "json"
 }
 
 vim.api.nvim_create_autocmd("FileType", {

@@ -1,0 +1,12 @@
+{
+    "addSnippet": {
+        "prefix": "addSnippet",
+        "body": [
+            "\"${1:snippetName}\": {",
+            "\t\"prefix\": [\"${2:prefix}\"],",
+            "\t\"body\": [\"${3:body}\"],",
+            "\t\"description\": \"${4:description}\"",
+            "},"
+        ]
+    }
+}

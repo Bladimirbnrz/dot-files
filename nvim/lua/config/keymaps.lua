@@ -27,7 +27,6 @@ map("v", "<leader>s", "<Plug>(nvim-surround-visual)", opts)          --surround 
 map("v", "<leader>S", "<Plug>(nvim-surround-visual-line)", opts)     --surrouns the selection whitin a block
 
 
--- map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show floating diagnostic" })
 map("n", "<leader>e", vim.diagnostic.setloclist, { desc = "Show list of diagnoses" })
 
 --Navigation
@@ -65,15 +64,12 @@ local function GlobalOpenOil()
   else
     oil.open()
   end
-
-  vim.defer_fn(function()
-    local seq = vim.api.nvim_replace_termcodes("<C-p>", true, false, true)
-    vim.api.nvim_feedkeys(seq, 'm', false)
-  end, 200)
+  --try to open preview
+  Try_open_preview(6, 30)
 end
 
 -- Global keymap to open Oil in current buffer's directory
-map("n", "<leader>-", GlobalOpenOil, { desc = "Open Oil in current file's directory", silent = true })
+map("n", "-", GlobalOpenOil, { desc = "Open Oil in current file's directory", silent = true })
 
 -- Global keymap to open Oil in current buffer's directory in float mode
-map("n", "-", OpenOilFloatHere, { desc = "Open Oil in current file'directory in float mode", silent = true })
+map("n", "<leader>-", OpenOilFloatHere, { desc = "Open Oil in current file'directory in float mode", silent = true })

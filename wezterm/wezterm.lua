@@ -10,7 +10,7 @@ config.font_size = 14
 
 config.window_decorations = "RESIZE"
 config.window_background_image = "C:/Users/bladi/OneDrive/Imágenes/Fondos/kanagawa-wallpaper.jpg"
-config.window_background_opacity = 0.25
+config.window_background_opacity = 0.20
 
 config.window_padding = {
   right = '0px',
@@ -86,7 +86,7 @@ wezterm.on("format-tab-title", function(tab, tabs)
 end)
 
 
-config.max_fps = 240
+config.max_fps = 120
 config.enable_kitty_graphics = true
 
 
@@ -94,14 +94,14 @@ config.enable_kitty_graphics = true
 config.default_domain = 'WSL:Debian'
 config.front_end = 'OpenGL'
 
-local gpus = wezterm.gui.enumerate_gpus()
+-- local gpus = wezterm.gui.enumerate_gpus()
 
-if #gpus > 0 then
-  config.webgpu_preferred_adapter = gpus[1] -- only set if there's at least one GPU
-else
-  -- fallback to default behavior or log a message
-  wezterm.log_info("No GPUs found, using default settings")
-end
+-- if #gpus > 0 then
+-- config.webgpu_preferred_adapter = gpus[1] -- only set if there's at least one GPU
+-- else
+-- fallback to default behavior or log a message
+-- wezterm.log_info("No GPUs found, using default settings")
+-- end
 
 config.keys = {
   -- Comment if the bindings (keymaps) do work natively with fish

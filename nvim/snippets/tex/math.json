@@ -1,0 +1,91 @@
+{
+    "MathInLine$": {
+        "prefix": "mil",
+        "body": ["\\$$0\\$"],
+        "description": "Math in line"
+    },
+    "MathInBlock": {
+        "prefix": "mib",
+        "body": [
+            "\\[",
+            "\t$0",
+            "\\]"
+        ],
+        "description": "Math in Block"
+    },
+    "fraction": {
+        "prefix": [ "\\frac", "frac" ],
+        "body": ["\\frac{$1}{$2}"],
+        "description": "fraction"
+    },
+    "dfraction": {
+        "prefix": [ "\\dfrac", "dfrac" ],
+        "body": ["\\dfrac{$1}{$2}"],
+        "description": "dfraction"
+    },
+    "PartialDev": {
+        "prefix": ["pdv", "\\pdv"],
+        "body": ["\\pdv[${1:1}]{$2}{$3}"],
+        "description": "Partial Derivation"
+    },
+    "PartialDev": {
+        "prefix": ["odv", "\\odv"],
+        "body": ["\\odv[${1:1}]{$2}{$3}"],
+        "description": "Ordinary Derivation"
+    },
+    "sqrt": {
+        "prefix": ["\\sqrt", "sqrt"],
+        "body": ["\\sqrt{$1}"],
+        "description": "Square Root"
+    },
+    "sqrtt": {
+        "prefix": ["\\sqrtt", "sqrtt"],
+        "body": ["\\sqrt[${1:1}]{$2}"],
+        "description": "n-th Root"
+    },
+    "boxed": {
+        "prefix": ["\\boxed"],
+        "body": ["\\boxed{$0}"],
+        "description": "Boxed"
+    },
+    "text": {
+        "prefix": ["\\text"],
+        "body": ["\\text{$1}"],
+        "description": "Text in Math"
+    },
+    "mathbb": {
+        "prefix": ["\\mathbb"],
+        "body": ["\\mathbb{$1}"],
+        "description": "Blackboard bold"
+    },
+    "mathrm": {
+        "prefix": ["\\mathrm"],
+        "body": ["\\mathrm{$1}"],
+        "description": "Roman font"
+    },
+    "mathcal": {
+        "prefix": ["\\mathcal"],
+        "body": ["\\mathcal{$1}"],
+        "description": "Calligraphic"
+    },
+    "mathfrak": {
+        "prefix": ["\\mathfrak"],
+        "body": ["\\mathfrak{$1}"],
+        "description": "Fraktur"
+    },
+    "mathscr": {
+        "prefix": ["\\mathscr"],
+        "body": ["\\mathscr{$1}"],
+        "description": "Script"
+    },
+    "mathds": {
+        "prefix": ["\\mathds"],
+        "body": ["\\mathds{$1}"],
+        "description": "Double-struck"
+    },
+    "DeclareMathOperator": {
+        "prefix": ["DeclareMathOperator", "\\DeclareMathOperator"],
+        "body": ["\\DeclareMathOperator{$1}{$2}"],
+        "description": "Declare math operator"
+    }
+}

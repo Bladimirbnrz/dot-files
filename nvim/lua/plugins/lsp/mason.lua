@@ -9,6 +9,8 @@ return {
       "ruff",
       "pyright",
       "lua-language-server",
+      "texlab",
+      "fortls",
     }
 
     mason_registry.refresh(function()

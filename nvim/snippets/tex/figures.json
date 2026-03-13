@@ -1,0 +1,21 @@
+{
+    "figure": {
+        "prefix": ["figure", "\\figure"],
+        "body": [
+            "\\begin{figure}[$1]",
+            "\t\\includegraphics[width=$2\\textwidth]{$3}",
+            "\\end{figure}"
+        ],
+        "description": "Figure environment"
+    },
+    "includegraphics": {
+        "prefix": ["\\includegraphics"],
+        "body": ["\\includegraphics[width=$1\\textwidth]{$2}"],
+        "description": "Include graphics"
+    },
+    "caption": {
+        "prefix": ["\\caption"],
+        "body": ["\\caption{$1}"],
+        "description": "Caption"
+    }
+}

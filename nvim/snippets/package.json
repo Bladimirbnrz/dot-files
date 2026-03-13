@@ -1,0 +1,71 @@
+{
+    "name": "snippets",
+    "engines": {
+        "vscode": "^1.11.0"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": ["fortran", "f90"],
+                "path": "./fortran/fortran.json"
+            },
+            {
+                "language": "tex",
+                "path": "./tex/basics.json"
+            },
+            {
+                "language": "tex",
+                "path": "./tex/math.json"
+            },
+            {
+                "language": "tex",
+                "path": "./tex/document_structure.json"
+            },
+            {
+                "language": "tex",
+                "path": "./tex/figures.json"
+            },
+            {
+                "language": "tex",
+                "path": "./tex/text_format.json"
+            },
+            {
+                "language": "tex",
+                "path": "./tex/references.json"
+            },
+            {
+                "language": "python",
+                "path": "./python/python.json"
+            },
+            {
+                "language": "python",
+                "path": "./python/comprehension.json"
+            },
+            {
+                "language": "python",
+                "path": "./python/unittest.json"
+            },
+            {
+                "language": "python",
+                "path": "./python/debug.json"
+            },
+            {
+                "language": "pydoc",
+                "path": "./python/pydoc.json"
+            },
+            {
+                "language": "lua",
+                "path": "./lua/lua.json"
+            },
+            {
+                "language": "luadoc",
+                "path": "./lua/luadoc.json"
+            },
+            {
+                "language": "json",
+                "path": "./json/json.json"
+            }
+        ]
+    }
+}
+

@@ -1,0 +1,47 @@
+{
+    "bold": {
+        "prefix": ["bf", "\\textbf"],
+        "body": ["\\textbf{$1}"],
+        "description": "Bold Text"
+    },
+    "italic": {
+        "prefix": ["it", "\\textit"],
+        "body": ["\\textit{$1}"],
+        "description": "Italic Text"
+    },
+    "mono": {
+        "prefix": ["tt", "\\texttt"],
+        "body": ["\\texttt{$1}"],
+        "description": "Monospaced Text"
+    },
+    "textsf": {
+        "prefix": ["textsf", "\\textsf"],
+        "body": ["\\textsf{$1}"],
+        "description": "Sans-serif text"
+    },
+    "textrm": {
+        "prefix": ["textrm", "\\textrm"],
+        "body": ["\\textrm{$1}"],
+        "description": "Roman text"
+    },
+    "textsc": {
+        "prefix": ["textsc", "\\textsc"],
+        "body": ["\\textsc{$1}"],
+        "description": "Small caps"
+    },
+    "underline": {
+        "prefix": ["underline", "\\underline"],
+        "body": ["\\underline{$1}"],
+        "description": "Underline"
+    },
+    "emph": {
+        "prefix": ["emph", "\\emph"],
+        "body": ["\\emph{$1}"],
+        "description": "Emphasize"
+    },
+    "textcolor": {
+        "prefix": ["textcolor", "\\textcolor"],
+        "body": ["\\textcolor{$1}{$2}"],
+        "description": "Text color"
+    }
+}

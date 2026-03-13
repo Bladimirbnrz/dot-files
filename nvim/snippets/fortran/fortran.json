@@ -1,0 +1,35 @@
+{
+    "write": {
+        "prefix": ["write"],
+        "body": ["write(${1:*},${2:*}) $0"],
+        "description": "Default WRITE with no arguments"
+    },
+    "read": {
+        "prefix": ["read"],
+        "body": ["read(${1:*},${2:*}) $0"],
+        "description": "Default READ with no arguments",
+        "scope": "source.fortran"
+    },
+    "if": {
+        "prefix": "if",
+        "body": "if (${1:condition}) then\n\t$0\nend if",
+        "description": "if",
+        "scope": "source.fortran"
+    },
+    "do": {
+        "prefix": "do",
+        "body": ["do $1=$2, $3\n\t$0\nend do"],
+        "description": "DO Loop",
+        "scope": "source.fortran"
+    },
+    "dowhile": {
+        "prefix": ["dowhile"],
+        "body": [
+            |"do while (${1:cond})",
+            "\t$0",
+            "end do"
+        ],
+        "description": "DO-WHILE Loop",
+        "scope": "source.fortran"
+    }
+}

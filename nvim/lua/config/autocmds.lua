@@ -8,6 +8,37 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
   end,
 })
 
+
+
+--========= Lint Trigger =========--
+
+vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "BufWritePost", "TextChanged" }, {
+  pattern = "*.f90",
+  callback = function()
+    local lint_status, lint = pcall(require, "lint")
+    if vim.bo.modified then
+      vim.cmd("silent write") ----> WARNING: this save the file every time you exit of insert mode
+    end
+    if lint_status then
+      lint.try_lint()
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+  callback = function()
+    vim.diagnostic.hide()
+  end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    vim.diagnostic.show()
+  end,
+})
+
+
+
 --========= Auto open Oil-Preview on start =========--
 
 -- Auxiliar function to try to open Oil-Preview several times silently
@@ -53,7 +84,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     then
       -- Will try opening preview six times every twenty ms
       -- You can modify the number of attpemps or the interval between them if it does not working
-      Try_open_preview(6, 20)
+      Try_open_preview(6, 30)
       vim.env.NVIM_OIL_PREVIEW = nil
     end
   end,

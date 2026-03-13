@@ -4,14 +4,89 @@ return {
   -- optional: provides snippets for the snippet source
   -- use a release tag to download pre-built binaries
   version = '1.*',
-  -- dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+
+  dependencies = {
+    { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+    -- {
+    --   "micangl/cmp-vimtex",
+    --   dependencies = {
+    --     {
+    --       "saghen/blink.compat",
+    --       version = "*",
+    --       lazy = true,
+    --       opts = {},
+    --     },
+    --   },
+    -- }
+  },
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
+    snippets = { preset = "luasnip" },
     sources = {
-      default = { "lsp", "buffer", "path" },
+      default = { "lsp", "buffer", "path", "snippets" },
+
+      providers = {
+        -- to add Vimtex as an autocomplete source see
+        -- https://github.com/micangl/cmp-vimtex/issues/30#issuecomment-3084686827
+        -- vimtex = {
+        --   name = "vimtex",
+        --   min_keyword_length = 2,
+        --   module = "blink.compat.source",
+        --   score_offset = 80,
+        -- },
+        snippets = {
+          min_keyword_length = 2,
+          score_offset = 30
+        },
+        lsp = {
+          transform_items = function(_, items)
+            local ft = vim.bo.filetype
+            local kinds = require("blink.cmp.types").CompletionItemKind
+
+            -- FORTRAN
+            if ft == "fortran" then
+              local allowed = {
+                [kinds.Variable] = true,
+                [kinds.Field] = true,
+              }
+
+              local filtered = {}
+
+              for _, item in ipairs(items) do
+                if allowed[item.kind] then
+                  filtered[#filtered + 1] = item
+                end
+              end
+
+              return filtered
+            end
+
+            -- LaTeX
+            if ft == "tex" then
+              for _, item in ipairs(items) do
+                -- Change the completion type and avoid automatic brackets “{...}” in \commands
+                if item.kind == kinds.Function then
+                  item.kind = kinds.Keyword
+                end
+              end
+              return items
+            end
+
+            -- Other languages
+            return items
+          end,
+          score_offset = 35
+        },
+
+        buffer = {
+          min_keyword_length = 3,
+          score_offset = 20
+        }
+      }
     },
+
     keymap = {
       preset = 'none', -- or set to default for default keymaps
 
@@ -37,16 +112,15 @@ return {
         selection = { auto_insert = false }
       },
       menu = {
+        auto_show_delay_ms = 150,
         border = "single",
         winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection",
       },
 
       -- enable ghost_text
       ghost_text = {
-        -- enabled = true,
-        enabled = function()
+        enabled = function() -- disable ghost_text in buffer completion
           local excluded_sources = {
-            snippets = true,
             buffer = true,
           }
 
@@ -63,7 +137,6 @@ return {
         end,
 
         show_without_selection = false,
-        -- show_without_menu = false,
       },
 
       documentation = {
@@ -95,7 +168,8 @@ return {
         Property      = " ",
         Enum          = " ",
         Reference     = " ",
-        Keyword       = " ",
+        -- Keyword       = " ",
+        Keyword       = "󰘎 ",
         File          = " ",
         Folder        = " ",
         Color         = " ",
