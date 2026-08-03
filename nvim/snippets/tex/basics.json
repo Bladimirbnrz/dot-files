@@ -4,6 +4,15 @@
         "body": ["\\usepackage{$1}"],
         "description": "Add an usepackage"
     },
+    "env": {
+        "prefix": ["begin", "\\begin"],
+        "body": [
+            "\\begin{$1}",
+            "\t$0",
+            "\\end{$1}"
+        ],
+        "description": "Env"
+    },
     "equation": {
         "prefix": ["equation"],
         "body": [

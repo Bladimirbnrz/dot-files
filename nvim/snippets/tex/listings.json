@@ -1,0 +1,17 @@
+{
+    "pycode": {
+        "prefix": ["\\pycode", "pycode"],
+        "body": ["\\pycode[label=$1, codetitle=$2]{${3:path}}$0"],
+        "description": "Insert Python code given a path"
+    },
+    "fcode": {
+        "prefix": ["\\fcode", "fcode"],
+        "body": ["\\fcode[label=$1, codetitle=$2]{${3:path}}$0"],
+        "description": "Insert F90 code given a path"
+    },
+    "output": {
+        "prefix": ["codeoutput", "\\codeoutput"],
+        "body": ["\\codeoutput{$2}{${3:path}}$0"],
+        "description": "Insert an output code given a path"
+    }
+}

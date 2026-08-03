@@ -34,6 +34,10 @@
                 "path": "./tex/references.json"
             },
             {
+                "language": "tex",
+                "path": "./tex/listings.json"
+            },
+            {
                 "language": "python",
                 "path": "./python/python.json"
             },

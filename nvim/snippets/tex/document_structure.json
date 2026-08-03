@@ -14,6 +14,21 @@
         "body": ["\\subsubsection{$1}"],
         "description": "Subsubsection"
     },
+    "section*": {
+        "prefix": ["section*", "\\section*"],
+        "body": ["\\section*{$1}"],
+        "description": "Section*"
+    },
+    "subsection*": {
+        "prefix": ["subsection*", "\\subsection*"],
+        "body": ["\\subsection*{$1}"],
+        "description": "Subsection*"
+    },
+    "subsubsection*": {
+        "prefix": ["subsubsection*", "\\subsubsection*"],
+        "body": ["\\subsubsection*{$1}"],
+        "description": "Subsubsection*"
+    },
     "usection": {
         "prefix": ["usection", "\\usection"],
         "body": ["\\usection{$1}"],

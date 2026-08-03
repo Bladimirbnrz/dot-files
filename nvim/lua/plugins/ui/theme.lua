@@ -24,11 +24,6 @@ return {
           PmenuThumb = { bg = "#5E5B82" },
         }
       end,
-      -- theme = "wave", -- Load "wave" theme
-      --       background = { -- map the value of 'background' option to a theme
-      --         dark = "wave", -- try "dragon" !
-      --         light = "lotus",
-      --       },
     })
     vim.cmd.colorscheme("kanagawa")
   end

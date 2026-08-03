@@ -1,9 +1,5 @@
 local o = vim.opt
 local g = vim.g
-
--- vim.opt.spell = true
--- vim.opt.spelllang = { "es", "en" }
-
 o.number = true
 o.relativenumber = true
 o.showmode = false
@@ -24,6 +20,8 @@ g.maplocalleader = ","
 o.updatetime = 500
 o.title = true -----> nvim manages the buffer name, more in autocmds.lua
 
+-- Python3 Provider
+g.python3_host_prog = "/usr/bin/python3"
 
 local four_space_filetypes = {
   "python", "c", "cpp", "rust", "go", "java", "fortran", "json"

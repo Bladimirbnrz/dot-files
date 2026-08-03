@@ -2,23 +2,36 @@ local map = vim.keymap.set
 
 local opts = { noremap = true, silent = true }
 
-map("n", "<leader>w", "<cmd>w<CR>", opts)                                      --save
-map("n", "<leader>q", "<cmd>q<CR>", opts)                                      --exit
-map("n", "<leader>Q", "<cmd>q!<CR>", opts)                                     --forced exit
-map("n", "<leader>x", "<cmd>x<CR>", opts)                                      --save and exit
+-- Basics
+map("n", "<leader>w", "<cmd>w<CR>", opts)           --save
+map("n", "<leader>q", "<cmd>q<CR>", opts)           --exit
+map("n", "<leader>Q", "<cmd>q!<CR>", opts)          --forced exit
+map("n", "<leader>x", "<cmd>x<CR>", opts)           --save and exit
 
-map("n", "<leader>77", "<cmd>nohlsearch<CR>", opts)                            --clear highlighted search
+map("n", "<leader>77", "<cmd>nohlsearch<CR>", opts) --clear highlighted search
 
-map("n", "<leader>nt", "<cmd>Neotree left toggle filesystem reveal<CR>", opts) --toggle for tree
 
---Commenter
-map("n", "<leader>cc", "<Plug>(comment_toggle_linewise_current)", opts)
-map("x", "<leader>cc", "<Plug>(comment_toggle_linewise_visual)", opts)
+-- Commenter
 
---Surround
---For the delete(ds) and change(cs/cS) functions, the keymaps are the default ones
---For the keymaps below, you can press “keys”+i (i-nsert) and edit the right and left delimiters independently.
---Read more abut this in https://github.com/kylechui/nvim-surround
+local comment = require("vim._comment")
+
+map({ 'n', 'x' }, '<leader>c', function()
+  return comment.operator()
+end, { expr = true, desc = 'Comment operator' })
+
+map('n', '<leader>cc', function()
+  return comment.operator() .. '_'
+end, { expr = true, desc = 'Comment toggle current line' })
+
+map('x', '<leader>cc', function()
+  return comment.operator()
+end, { expr = true, desc = 'Comment toggle (visual)' })
+
+
+-- Surround
+-- For the delete(ds) and change(cs/cS) functions, the keymaps are the default ones
+-- For the keymaps below, you can press “keys”+i (i-nsert) and edit the right and left delimiters independently.
+-- Read more abut this in https://github.com/kylechui/nvim-surround
 map("n", "<leader>as", "<Plug>(nvim-surround-normal)a", opts)        --surround around and object
 map("n", "<leader>is", "<Plug>(nvim-surround-normal)iw", opts)       --inner word surround
 map("n", "<leader>s", "<Plug>(nvim-surround-normal-cur)", opts)      --surround the line
@@ -27,9 +40,10 @@ map("v", "<leader>s", "<Plug>(nvim-surround-visual)", opts)          --surround 
 map("v", "<leader>S", "<Plug>(nvim-surround-visual-line)", opts)     --surrouns the selection whitin a block
 
 
+-- Diagnostic
 map("n", "<leader>e", vim.diagnostic.setloclist, { desc = "Show list of diagnoses" })
 
---Navigation
+-- Navigation
 map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-k>", "<C-w>k", opts)

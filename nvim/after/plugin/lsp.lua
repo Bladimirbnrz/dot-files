@@ -8,7 +8,7 @@ vim.lsp.config("*", {
 })
 
 -- to avoid conflicts between pyright and ruff
-vim.lsp.config("pyright", {
+vim.lsp.config("ruff", {
   on_attach = function(client)
     client.server_capabilities.documentFormattingProvider = false
   end,

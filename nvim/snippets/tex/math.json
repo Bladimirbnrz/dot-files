@@ -1,91 +1,91 @@
 {
     "MathInLine$": {
         "prefix": "mil",
-        "body": ["\\$$0\\$"],
+        "body": ["\\$$1\\$$0"],
         "description": "Math in line"
     },
     "MathInBlock": {
         "prefix": "mib",
         "body": [
             "\\[",
-            "\t$0",
-            "\\]"
+            "\t$1",
+            "\\]$0"
         ],
         "description": "Math in Block"
     },
     "fraction": {
         "prefix": [ "\\frac", "frac" ],
-        "body": ["\\frac{$1}{$2}"],
+        "body": ["\\frac{$1}{$2}$0"],
         "description": "fraction"
     },
     "dfraction": {
         "prefix": [ "\\dfrac", "dfrac" ],
-        "body": ["\\dfrac{$1}{$2}"],
+        "body": ["\\dfrac{$1}{$2}$0"],
         "description": "dfraction"
     },
     "PartialDev": {
         "prefix": ["pdv", "\\pdv"],
-        "body": ["\\pdv[${1:1}]{$2}{$3}"],
+        "body": ["\\pdv[${1:1}]{$2}{$3}$0"],
         "description": "Partial Derivation"
     },
     "PartialDev": {
         "prefix": ["odv", "\\odv"],
-        "body": ["\\odv[${1:1}]{$2}{$3}"],
+        "body": ["\\odv[${1:1}]{$2}{$3}$0"],
         "description": "Ordinary Derivation"
     },
     "sqrt": {
         "prefix": ["\\sqrt", "sqrt"],
-        "body": ["\\sqrt{$1}"],
+        "body": ["\\sqrt{$1}$0"],
         "description": "Square Root"
     },
     "sqrtt": {
         "prefix": ["\\sqrtt", "sqrtt"],
-        "body": ["\\sqrt[${1:1}]{$2}"],
+        "body": ["\\sqrt[${1:1}]{$2}$0"],
         "description": "n-th Root"
     },
     "boxed": {
         "prefix": ["\\boxed"],
-        "body": ["\\boxed{$0}"],
+        "body": ["\\boxed{$1}$0"],
         "description": "Boxed"
     },
     "text": {
         "prefix": ["\\text"],
-        "body": ["\\text{$1}"],
+        "body": ["\\text{$1}$0"],
         "description": "Text in Math"
     },
     "mathbb": {
         "prefix": ["\\mathbb"],
-        "body": ["\\mathbb{$1}"],
+        "body": ["\\mathbb{$1}$0"],
         "description": "Blackboard bold"
     },
     "mathrm": {
         "prefix": ["\\mathrm"],
-        "body": ["\\mathrm{$1}"],
+        "body": ["\\mathrm{$1}$0"],
         "description": "Roman font"
     },
     "mathcal": {
         "prefix": ["\\mathcal"],
-        "body": ["\\mathcal{$1}"],
+        "body": ["\\mathcal{$1}$0"],
         "description": "Calligraphic"
     },
     "mathfrak": {
         "prefix": ["\\mathfrak"],
-        "body": ["\\mathfrak{$1}"],
+        "body": ["\\mathfrak{$1}$0"],
         "description": "Fraktur"
     },
     "mathscr": {
         "prefix": ["\\mathscr"],
-        "body": ["\\mathscr{$1}"],
+        "body": ["\\mathscr{$1}$0"],
         "description": "Script"
     },
     "mathds": {
         "prefix": ["\\mathds"],
-        "body": ["\\mathds{$1}"],
+        "body": ["\\mathds{$1}$0"],
         "description": "Double-struck"
     },
     "DeclareMathOperator": {
         "prefix": ["DeclareMathOperator", "\\DeclareMathOperator"],
-        "body": ["\\DeclareMathOperator{$1}{$2}"],
+        "body": ["\\DeclareMathOperator{$1}{$2}$0"],
         "description": "Declare math operator"
     }
 }

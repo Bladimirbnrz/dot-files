@@ -1,3 +1,11 @@
+--========= FileType Highlighting =========--
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { "python" },
+  callback = function() vim.treesitter.start() end,
+})
+
+
 --========= Update filename =========--
 
 vim.api.nvim_create_augroup("TitleUpdate", { clear = true })
@@ -8,6 +16,15 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
   end,
 })
 
+
+--========= Spell =========--
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "latex", "tex" },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt.spelllang = { "es", "en" }
+  end,
+})
 
 
 --========= Lint Trigger =========--
@@ -30,13 +47,6 @@ vim.api.nvim_create_autocmd("InsertEnter", {
     vim.diagnostic.hide()
   end,
 })
-
-vim.api.nvim_create_autocmd("InsertLeave", {
-  callback = function()
-    vim.diagnostic.show()
-  end,
-})
-
 
 
 --========= Auto open Oil-Preview on start =========--

@@ -1,6 +1,7 @@
 return {
   "lervag/vimtex",
-  lazy = false,
+  ft = { "tex" },
+  -- lazy = false,
   init = function()
     vim.g.vimtex_view_forward_search_on_start = 0
     -- vim.g.vimtex_syntax_enabled = 0
@@ -33,6 +34,19 @@ return {
     -- vim.g.vimtex_view_general_options = '--unique file:@pdf#src:@line@tex'
 
     vim.g.vimtex_mappings_enabled = 0 -- Go to .../after/ftplugin/tex.lua to see the custom keymaps
-    vim.g.vimtex_imaps_enabled = 0
+    vim.g.vimtex_imaps_enabled = 0    -- Disable insert keymaps
+
+
+    vim.g.vimtex_fold_enabled = 1
+
+    -- vim.g.vimtex_quickfix_ignore_filters = {
+    --   [[Overfull \\vbox]],
+    --   [[Underfull \\hbox]],
+    --   [[Overfull \\hbox]],
+    --   [[LaTeX Warning: .\+ float specifier changed to]],
+    --   [[LaTeX hooks Warning]],
+    --   [[Package siunitx Warning: Detected the "physics" package:]],
+    --   [[Package hyperref Warning: Token not allowed in a PDF string]],
+    -- }
   end,
 }

@@ -1,23 +1,24 @@
 return {
   'saghen/blink.cmp',
   lazy = false,
-  -- optional: provides snippets for the snippet source
+
   -- use a release tag to download pre-built binaries
   version = '1.*',
 
   dependencies = {
     { 'L3MON4D3/LuaSnip', version = 'v2.*' },
-    -- {
-    --   "micangl/cmp-vimtex",
-    --   dependencies = {
-    --     {
-    --       "saghen/blink.compat",
-    --       version = "*",
-    --       lazy = true,
-    --       opts = {},
-    --     },
-    --   },
-    -- }
+    {
+      "micangl/cmp-vimtex",
+      ft = { "latex" },
+      dependencies = {
+        {
+          "saghen/blink.compat",
+          version = "*",
+          lazy = true,
+          opts = {},
+        }
+      }
+    }
   },
 
   ---@module 'blink.cmp'
@@ -26,19 +27,57 @@ return {
     snippets = { preset = "luasnip" },
     sources = {
       default = { "lsp", "buffer", "path", "snippets" },
+      per_filetype = {
+        tex = { "vimtex", "lsp", "buffer", "path", "snippets" },
+      },
 
       providers = {
-        -- to add Vimtex as an autocomplete source see
+        -- to learn more about how to add Vimtex as an autocomplete source see
         -- https://github.com/micangl/cmp-vimtex/issues/30#issuecomment-3084686827
-        -- vimtex = {
-        --   name = "vimtex",
-        --   min_keyword_length = 2,
-        --   module = "blink.compat.source",
-        --   score_offset = 80,
-        -- },
+        vimtex = {
+          name = "vimtex",
+          enabled = function()
+            local line = vim.api.nvim_get_current_line()
+            local col = vim.api.nvim_win_get_cursor(0)[2]
+            local before_cursor = line:sub(1, col)
+
+            -- Keep enabled for citations and references
+            if before_cursor:match([[%a*cite[^{]*{[^}]*$]]) or
+                before_cursor:match([[%a*[Rr]ef[^{]*{[^}]*$]]) then
+              return true
+            end
+            return false
+          end,
+          transform_items = function(_, items)
+            local kinds = require("blink.cmp.types").CompletionItemKind
+
+            for _, item in ipairs(items) do
+              -- References in Vimtex are labeled "Property"
+              if item.kind == kinds.Property then
+                item.kind = kinds.Reference
+                item.documentation = {
+                  kind = "plaintext",
+                  value = "Context\n" .. item.labelDetails.description
+                }
+                item.labelDetails.description = nil
+                item.textEdit = nil
+              end
+            end
+            return items
+          end,
+          min_keyword_length = 1,
+          module = "blink.compat.source",
+          score_offset = 100
+        },
         snippets = {
           min_keyword_length = 2,
-          score_offset = 30
+          score_offset = function()
+            if vim.bo.filetype == "fortran" then
+              return 40
+            end
+
+            return 30
+          end
         },
         lsp = {
           transform_items = function(_, items)
@@ -50,6 +89,8 @@ return {
               local allowed = {
                 [kinds.Variable] = true,
                 [kinds.Field] = true,
+                [kinds.Function] = true,
+                [kinds.Module] = true,
               }
 
               local filtered = {}
@@ -65,30 +106,43 @@ return {
 
             -- LaTeX
             if ft == "tex" then
+              local filtered = {}
               for _, item in ipairs(items) do
-                -- Change the completion type and avoid automatic brackets “{...}” in \commands
+                -- Change the completion kind and avoid automatic brackets “{...}” in \commands
                 if item.kind == kinds.Function then
                   item.kind = kinds.Keyword
                 end
+
+                local is_ref = false
+                -- For some reason, Texlab kind for references is "Method" or a "Constructor"
+                if item.kind == kinds.Method or
+                    item.kind == kinds.Constructor or
+                    item.kind == kinds.Constant then
+                  is_ref = true
+                end
+
+                if not is_ref then
+                  filtered[#filtered + 1] = item
+                end
               end
-              return items
+              return filtered
             end
 
             -- Other languages
             return items
           end,
-          score_offset = 35
+          min_keyword_length = 2,
+          score_offset = 50
         },
 
         buffer = {
           min_keyword_length = 3,
-          score_offset = 20
-        }
+          score_offset = 10
+        },
       }
     },
-
     keymap = {
-      preset = 'none', -- or set to default for default keymaps
+      preset = 'none', -- or set to 'default' for default keymaps
 
       ['<Tab>'] = { 'select_next', 'fallback' },
       ['<S-Tab>'] = { 'select_prev', 'fallback' },
@@ -125,6 +179,7 @@ return {
           }
 
           local item = require("blink.cmp").get_selected_item()
+
           if not item then
             return false
           end
@@ -168,7 +223,6 @@ return {
         Property      = " ",
         Enum          = " ",
         Reference     = " ",
-        -- Keyword       = " ",
         Keyword       = "󰘎 ",
         File          = " ",
         Folder        = " ",

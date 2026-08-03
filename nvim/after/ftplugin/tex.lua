@@ -28,3 +28,7 @@ map('n', 'tsm', '<Plug>(vimtex-env-toggle-math)', { desc = 'Toggle Surround Math
 map({ 'n', 'o', 'x' }, '%', '<Plug>(vimtex-%)', { desc = 'Move between matching delimiter' })
 map({ 'n', 'o', 'x' }, ']]', '<Plug>(vimtex-]])', { desc = 'Jump to the begginng of next (sub)(sub)section' })
 map({ 'n', 'o', 'x' }, '[[', '<Plug>(vimtex-[[)', { desc = 'Jump to the begginng of the current (sub)(sub)section' })
+
+-- Folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "vimtex#fold#level(v:lnum)"

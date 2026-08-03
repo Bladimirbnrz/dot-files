@@ -1,42 +1,42 @@
 {
     "bold": {
         "prefix": ["bf", "\\textbf"],
-        "body": ["\\textbf{$1}"],
+        "body": ["\\textbf{$1}$0"],
         "description": "Bold Text"
     },
     "italic": {
         "prefix": ["it", "\\textit"],
-        "body": ["\\textit{$1}"],
+        "body": ["\\textit{$1}$0"],
         "description": "Italic Text"
     },
     "mono": {
         "prefix": ["tt", "\\texttt"],
-        "body": ["\\texttt{$1}"],
+        "body": ["\\texttt{$1}$0"],
         "description": "Monospaced Text"
     },
     "textsf": {
         "prefix": ["textsf", "\\textsf"],
-        "body": ["\\textsf{$1}"],
+        "body": ["\\textsf{$1}$0"],
         "description": "Sans-serif text"
     },
     "textrm": {
         "prefix": ["textrm", "\\textrm"],
-        "body": ["\\textrm{$1}"],
+        "body": ["\\textrm{$1}$0"],
         "description": "Roman text"
     },
     "textsc": {
         "prefix": ["textsc", "\\textsc"],
-        "body": ["\\textsc{$1}"],
+        "body": ["\\textsc{$1}$0"],
         "description": "Small caps"
     },
     "underline": {
         "prefix": ["underline", "\\underline"],
-        "body": ["\\underline{$1}"],
+        "body": ["\\underline{$1}$0"],
         "description": "Underline"
     },
     "emph": {
         "prefix": ["emph", "\\emph"],
-        "body": ["\\emph{$1}"],
+        "body": ["\\emph{$1}$0"],
         "description": "Emphasize"
     },
     "textcolor": {

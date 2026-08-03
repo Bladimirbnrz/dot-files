@@ -1,4 +1,45 @@
 {
+    "program": {
+        "prefix": ["program"],
+        "body": [
+            "! Objetivo: $1\n",
+            "program ${2: program_name}",
+            "\timplicit none",
+            "\t$0",
+            "\nend program"
+        ],
+        "description": "Some Program",
+        "scope": "source.fortran"
+    },
+    "module": {
+        "prefix": ["module"],
+        "body": [
+            "module ${1: module_name}",
+            "\timplicit none",
+            "\t$0",
+            "end module"
+        ],
+        "description": "description"
+    },
+    "subroutine": {
+        "prefix": ["subroutine"],
+        "body": [
+            "subroutine ${1:subroutine_name}(${args})",
+            "\t$0",
+            "end subroutine"
+        ],
+        "description": "Add a Subroutine"
+    },
+    "func": {
+        "prefix": ["function"],
+        "body": [
+            "${1:type} function ${2:func}(${3:args})",
+            "\timplicit none",
+            "\t$0",
+            "end function"
+        ],
+        "description": "Add a function"
+    },
     "write": {
         "prefix": ["write"],
         "body": ["write(${1:*},${2:*}) $0"],
@@ -12,20 +53,20 @@
     },
     "if": {
         "prefix": "if",
-        "body": "if (${1:condition}) then\n\t$0\nend if",
+        "body": "if ($1) then\n\t$0\nend if",
         "description": "if",
         "scope": "source.fortran"
     },
     "do": {
         "prefix": "do",
-        "body": ["do $1=$2, $3\n\t$0\nend do"],
+        "body": ["do ${1:i}=${2:0}, ${3:100}\n\t$0\nend do"],
         "description": "DO Loop",
         "scope": "source.fortran"
     },
     "dowhile": {
         "prefix": ["dowhile"],
         "body": [
-            |"do while (${1:cond})",
+            "do while ($1)",
             "\t$0",
             "end do"
         ],
