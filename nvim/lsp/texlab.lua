@@ -5,10 +5,11 @@ return {
     texlab = {
       diagnostics = {
         ignoredPatterns = {
-          "Undefined reference"
+          "Undefined reference",
+          "Mismatched environment",
+          "Unused label"
         }
       },
     },
   },
 }
--- only detects some errors such as unclosed environments or quotes that do not exist

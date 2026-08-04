@@ -14,6 +14,13 @@ vim.lsp.config("ruff", {
   end,
 })
 
+-- to avoid conflicts between badness and texlab
+vim.lsp.config("texlab", {
+  on_attach = function(client)
+    client.server_capabilities.documentFormattingProvider = false
+  end,
+})
+
 local group = vim.api.nvim_create_augroup("user-lsp-attach", { clear = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -24,16 +31,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local map = function(lhs, rhs, desc)
       vim.keymap.set("n", lhs, rhs, { buffer = buf, desc = desc })
     end
-    -- Navigation
-    map("gd", vim.lsp.buf.definition, "LSP: Go to definition")
-    map("gr", vim.lsp.buf.references, "LSP: List references")
 
-    -- Info
-    map("K", vim.lsp.buf.hover, "LSP: Hover documentation")
+    -- Navigation
+    map("gd", vim.lsp.buf.definition, "LSP: Go to definition") -- default: grd
 
     -- Refactor
-    map("<leader>rn", vim.lsp.buf.rename, "LSP: Rename symbol")
-    map("<leader>ca", vim.lsp.buf.code_action, "LSP: Code actions")
+    map("<leader>rn", vim.lsp.buf.rename, "LSP: Rename symbol")     -- default: grn
+    map("<leader>Ca", vim.lsp.buf.code_action, "LSP: Code actions") -- default gra
+
+    --Nvim already has its own mappings for LSP; these are just a few mnemonics.
+    --You can view them of all with “:map gr”
 
     --Formater
     map("<leader>f", function()
@@ -51,6 +58,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("badness")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("texlab")

@@ -42,12 +42,20 @@ vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "BufWritePost", "TextCh
   end,
 })
 
+
+--========= Show/Hide Diagnostics on Insert(Enter/Leave) =========--
+
 vim.api.nvim_create_autocmd("InsertEnter", {
   callback = function()
     vim.diagnostic.hide()
   end,
 })
 
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    vim.diagnostic.show(nil, 0)
+  end,
+})
 
 --========= Auto open Oil-Preview on start =========--
 

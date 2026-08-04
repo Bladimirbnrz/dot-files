@@ -30,5 +30,5 @@ map({ 'n', 'o', 'x' }, ']]', '<Plug>(vimtex-]])', { desc = 'Jump to the begginng
 map({ 'n', 'o', 'x' }, '[[', '<Plug>(vimtex-[[)', { desc = 'Jump to the begginng of the current (sub)(sub)section' })
 
 -- Folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "vimtex#fold#level(v:lnum)"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "vimtex#fold#level(v:lnum)"
