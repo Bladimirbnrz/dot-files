@@ -1,8 +1,29 @@
 local wezterm = require('wezterm')
 local act = wezterm.action
-
 local config = wezterm.config_builder()
--- wezterm.log_info("Config?")
+
+
+local window_states = {}
+
+wezterm.on('update-status', function(window, pane)
+  local window_id = window:window_id()
+  local title = pane:get_title() or ""
+  local is_texpresso_tab = title:lower():find("texpressoact") ~= nil
+
+  if is_texpresso_tab then
+    if not window_states[window_id] then
+      window:restore()
+      local screen = wezterm.gui.screens().active
+      window:set_position(screen.x, screen.y)
+      window:set_inner_size(screen.width / 2, screen.height)
+    end
+    window_states[window_id] = true
+  elseif window_states[window_id] then
+    window:maximize()
+    window_states[window_id] = false
+  end
+end)
+
 config.color_scheme = 'kanagawabones'
 config.font = wezterm.font 'IosevkaTerm Nerd Font'
 config.font_size = 14
