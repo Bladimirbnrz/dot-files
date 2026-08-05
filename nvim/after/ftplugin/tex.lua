@@ -29,6 +29,10 @@ map({ 'n', 'o', 'x' }, '%', '<Plug>(vimtex-%)', { desc = 'Move between matching 
 map({ 'n', 'o', 'x' }, ']]', '<Plug>(vimtex-]])', { desc = 'Jump to the begginng of next (sub)(sub)section' })
 map({ 'n', 'o', 'x' }, '[[', '<Plug>(vimtex-[[)', { desc = 'Jump to the begginng of the current (sub)(sub)section' })
 
+-- TeXpresso maps
+map('n', '<localleader>tx', '<cmd>TeXpresso %<CR>', { desc = 'Open TeXpresso on current file' })
+map('n', '<localleader>tc', '<cmd>TeXpressoClose<CR>', { desc = 'Close TeXpresso' })
+
 -- Folding
 -- vim.opt.foldmethod = "expr"
 -- vim.opt.foldexpr = "vimtex#fold#level(v:lnum)"
