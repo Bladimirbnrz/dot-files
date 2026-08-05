@@ -36,9 +36,9 @@ return {
     vim.g.vimtex_mappings_enabled = 0 -- Go to .../after/ftplugin/tex.lua to see the custom keymaps
     vim.g.vimtex_imaps_enabled = 0    -- Disable insert keymaps
 
+    -- vim.g.vimtex_fold_enabled = 1
 
-    vim.g.vimtex_fold_enabled = 1
-
+    -- Some common errors or warnings you might want to ignore
     -- vim.g.vimtex_quickfix_ignore_filters = {
     --   [[Overfull \\vbox]],
     --   [[Underfull \\hbox]],

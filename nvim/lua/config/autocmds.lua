@@ -57,6 +57,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   end,
 })
 
+
 --========= Auto open Oil-Preview on start =========--
 
 -- Auxiliar function to try to open Oil-Preview several times silently

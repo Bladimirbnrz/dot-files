@@ -1,5 +1,6 @@
 return {
   "mfussenegger/nvim-lint",
+  ft = "fortran",
   event = { "BufWritePost", "InsertLeave" },
   config = function()
     local lint = require("lint")

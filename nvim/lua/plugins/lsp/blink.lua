@@ -13,6 +13,7 @@ return {
       dependencies = {
         {
           "saghen/blink.compat",
+          ft = "latex",
           version = "*",
           lazy = true,
           opts = {},
