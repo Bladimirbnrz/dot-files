@@ -12,3 +12,10 @@ prepend_previewers = [
   { url = "*.toml", run = 'piper -- bat -p --theme="kanagawa" --color=always "$1"' },
   { url = "*.fish", run = 'piper -- bat -p --theme="kanagawa-dragon" --color=always "$1"' },
 ]
+
+[opener]
+
+edit = [
+  { run = "nvim %s", block = true, for = "unix", desc = "Open file" },
+  { run = ' wezterm.exe cli spawn -- nvim %s ', orphan = true, for = "unix", desc = "Open file in a new tab" },
+]
