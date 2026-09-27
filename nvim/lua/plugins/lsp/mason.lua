@@ -9,7 +9,7 @@ return {
       "ruff",
       "pyright",
       "lua-language-server",
-      "texlab",
+      -- "texlab",
       "fortls",
     }
 

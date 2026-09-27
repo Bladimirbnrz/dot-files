@@ -106,34 +106,22 @@ return {
             end
 
             -- LaTeX
+            --
             if ft == "tex" then
-              local filtered = {}
               for _, item in ipairs(items) do
-                -- Change the completion kind and avoid automatic brackets “{...}” in \commands
-                if item.kind == kinds.Function then
+                if item.detail and not item.detail:find("{") then
+                  -- this will not change the icon in menu completion,
+                  -- but resolve the autobrackets for commands that does not need arg
                   item.kind = kinds.Keyword
                 end
-
-                local is_ref = false
-                -- For some reason, Texlab kind for references is "Method" or a "Constructor"
-                if item.kind == kinds.Method or
-                    item.kind == kinds.Constructor or
-                    item.kind == kinds.Constant then
-                  is_ref = true
-                end
-
-                if not is_ref then
-                  filtered[#filtered + 1] = item
-                end
               end
-              return filtered
             end
 
             -- Other languages
             return items
           end,
           min_keyword_length = 2,
-          score_offset = 50
+          score_offset = 20
         },
 
         buffer = {
@@ -164,6 +152,7 @@ return {
     },
     completion = {
       list = {
+        max_items = 10,
         selection = { auto_insert = false }
       },
       menu = {
