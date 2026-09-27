@@ -17,5 +17,5 @@
   "smear-cursor.nvim": { "branch": "main", "commit": "9e9378d6ee34bb3782e0e8c63d9ec8ca618b479b" },
   "texpresso.vim": { "branch": "main", "commit": "b7712ed8adb17a49cd7aed837ec88bc5cebb6e04" },
   "transparent.nvim": { "branch": "main", "commit": "e00ca1cf09caef575edf8da7e5a8b9193893b4c7" },
-  "vimtex": { "branch": "master", "commit": "154eca8f68a5ad54eb12308bb378e88bdd0dfb3e" }
+  "vimtex": { "branch": "master", "commit": "42dcf1699e45725bd3b366ecab2ae06f6e0f8118" }
 }
