@@ -14,12 +14,6 @@ vim.lsp.config("ruff", {
   end,
 })
 
--- to avoid conflicts between badness and texlab
-vim.lsp.config("texlab", {
-  on_attach = function(client)
-    client.server_capabilities.documentFormattingProvider = false
-  end,
-})
 
 local group = vim.api.nvim_create_augroup("user-lsp-attach", { clear = true })
 
@@ -61,5 +55,5 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("badness")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
-vim.lsp.enable("texlab")
 vim.lsp.enable("fortls")
+vim.lsp.enable("clangd")
