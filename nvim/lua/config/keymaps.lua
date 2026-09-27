@@ -1,14 +1,18 @@
 local map = vim.keymap.set
 
-local opts = { noremap = true, silent = true }
+local opts_temp = { noremap = true, silent = true }
+
+local function opts(desc)
+  return { silent = true, desc = desc }
+end
 
 -- Basics
-map("n", "<leader>w", "<cmd>w<CR>", opts)           --save
-map("n", "<leader>q", "<cmd>q<CR>", opts)           --exit
-map("n", "<leader>Q", "<cmd>q!<CR>", opts)          --forced exit
-map("n", "<leader>x", "<cmd>x<CR>", opts)           --save and exit
+map("n", "<leader>w", "<cmd>w<CR>", { silent = true, desc = "Save" })
+map("n", "<leader>q", "<cmd>q<CR>", { silent = true, desc = "Exit" })
+map("n", "<leader>Q", "<cmd>q!<CR>", { silent = true, desc = "Forced Exit" })
+map("n", "<leader>x", "<cmd>x<CR>", { silent = true, desc = "Save and Exit" })
 
-map("n", "<leader>77", "<cmd>nohlsearch<CR>", opts) --clear highlighted search
+map("n", "<leader>77", "<cmd>nohlsearch<CR>", { silent = true, desc = "Clear highlighted search" })
 
 
 -- Commenter
@@ -32,22 +36,24 @@ end, { expr = true, desc = 'Comment toggle (visual)' })
 -- For the delete(ds) and change(cs/cS) functions, the keymaps are the default ones
 -- For the keymaps below, you can press “keys”+i (i-nsert) and edit the right and left delimiters independently.
 -- Read more abut this in https://github.com/kylechui/nvim-surround
-map("n", "<leader>as", "<Plug>(nvim-surround-normal)a", opts)        --surround around and object
-map("n", "<leader>is", "<Plug>(nvim-surround-normal)iw", opts)       --inner word surround
-map("n", "<leader>s", "<Plug>(nvim-surround-normal-cur)", opts)      --surround the line
-map("n", "<leader>S", "<Plug>(nvim-surround-normal-cur-line)", opts) --surround the line whitin a block
-map("v", "<leader>s", "<Plug>(nvim-surround-visual)", opts)          --surround the selection
-map("v", "<leader>S", "<Plug>(nvim-surround-visual-line)", opts)     --surrouns the selection whitin a block
+map("n", "<leader>as", "<Plug>(nvim-surround-normal)a", { desc = "Surround arround a textobject" })
+map("n", "<leader>is", "<Plug>(nvim-surround-normal)iw", { desc = "Inner word surround" })
+map("n", "<leader>s", "<Plug>(nvim-surround-normal-cur)", { desc = "Surround the line" })
+
+map("n", "<leader>S", "<Plug>(nvim-surround-normal-cur-line)", { desc = "Surround the line within a block" })
+
+map("v", "<leader>s", "<Plug>(nvim-surround-visual)", { desc = "Surround the selection" })
+map("v", "<leader>S", "<Plug>(nvim-surround-visual-line)", { desc = "Surrounds the selections within a block" })
 
 
 -- Diagnostic
 map("n", "<leader>e", vim.diagnostic.setloclist, { desc = "Show list of diagnoses" })
 
 -- Navigation
-map("n", "<C-h>", "<C-w>h", opts)
-map("n", "<C-j>", "<C-w>j", opts)
-map("n", "<C-k>", "<C-w>k", opts)
-map("n", "<C-l>", "<C-w>l", opts)
+map("n", "<C-h>", "<C-w>h", opts_temp)
+map("n", "<C-j>", "<C-w>j", opts_temp)
+map("n", "<C-k>", "<C-w>k", opts_temp)
+map("n", "<C-l>", "<C-w>l", opts_temp)
 
 
 local function OpenOilFloatHere()

@@ -1,5 +1,6 @@
 local o = vim.opt
 local g = vim.g
+
 o.number = true
 o.relativenumber = true
 o.showmode = false
@@ -24,7 +25,7 @@ o.title = true -----> nvim manages the buffer name, more in autocmds.lua
 g.python3_host_prog = "/usr/bin/python3"
 
 local four_space_filetypes = {
-  "python", "c", "cpp", "rust", "go", "java", "fortran", "json"
+  "python", "cpp", "c", "rust", "go", "java", "fortran", "json"
 }
 
 vim.api.nvim_create_autocmd("FileType", {
