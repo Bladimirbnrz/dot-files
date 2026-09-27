@@ -38,6 +38,10 @@
                 "path": "./tex/listings.json"
             },
             {
+                "language": "tex",
+                "path": "./tex/tikz.json"
+            },
+            {
                 "language": "python",
                 "path": "./python/python.json"
             },
@@ -64,6 +68,10 @@
             {
                 "language": "luadoc",
                 "path": "./lua/luadoc.json"
+            },
+            {
+                "language": "c",
+                "path": "./c/basic.json"
             },
             {
                 "language": "json",

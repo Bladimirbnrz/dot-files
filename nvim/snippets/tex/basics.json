@@ -40,5 +40,20 @@
         "prefix": ["align*"],
         "body": ["\\begin{align*}", "\t$0", "\\end{align*}"],
         "description": "Align*(ed)"
+    },
+    "author": {
+        "prefix": ["\\author"],
+        "body": ["\\author{$1}$0"],
+        "description": "Author"
+    },
+    "date": {
+        "prefix": ["\\date"],
+        "body": ["\\date{$1}$0"],
+        "description": "Date"
+    },
+    "title": {
+        "prefix": ["\\title"],
+        "body": ["\\title{$1}$0"],
+        "description": "titile"
     }
 }

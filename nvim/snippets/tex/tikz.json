@@ -1,0 +1,37 @@
+{
+    "coordinate": {
+        "prefix": ["\\coordinate", "coordinate"],
+        "body": ["\\coordinate ($1) at ($2);$0"],
+        "description": "Add a coordinate in tikz"
+    },
+    "line": {
+        "prefix": ["line"],
+        "body": ["\\draw[$1] ($2) -- ($3); $0"],
+        "description": "Draw a line in tikz"
+    },
+    "triangle": {
+        "prefix": ["triangle"],
+        "body": ["\\draw[$1] ($2) -- ($3) -- ($4) --cycle;$0"],
+        "description": "Draw a triangle in tikz"
+    },
+    "quadrilateral": {
+        "prefix": ["quadri"],
+        "body": ["\\draw[$1] ($2) -- ($3) -- ($4) -- ($5) --cycle;$0"],
+        "description": "Draw a quadrilateral in tikz"
+    },
+    "angle": {
+        "prefix": ["angle"],
+        "body": ["\\pic[draw, angle radius=$1] {angle = $2--$3--$4};$0"],
+        "description": "Draw a simple angle"
+    },
+    "anglewithname": {
+        "prefix": ["anglabel"],
+        "body": ["\\pic[draw, angle radius=$1, \"\\$${2:name}\\$\", angle eccentricity=1.3] {angle = $3--$4--$5};$0"],
+        "description": "Draw a angle with label"
+    },
+    "rightAngle": {
+        "prefix": ["rangle"],
+        "body": ["\\pic[draw, angle radius=$1]{right angle = $2--$3--$4};$0"],
+        "description": "Draw a right angle"
+    }
+}

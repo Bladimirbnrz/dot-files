@@ -1,0 +1,11 @@
+{
+    "newprogran": {
+        "prefix": ["newprogran"],
+        "body": ["#include <stdio.h>\n",
+                "int main(void) {",
+                "\t$0\n",
+                "\treturn 0;",
+                "}"],
+        "description": "Add a new program"
+    }
+}

@@ -9,7 +9,8 @@
         "body": [
             "\\[",
             "\t$1",
-            "\\]$0"
+            "\\]",
+            "$0"
         ],
         "description": "Math in Block"
     },
