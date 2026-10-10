@@ -106,13 +106,31 @@ return {
             end
 
             -- LaTeX
-            --
+
             if ft == "tex" then
+              local function expand_braces(str)
+                local count = 0
+                local result = str:gsub("{}", function()
+                  count = count + 1
+                  return "{$" .. count .. "}"
+                end)
+
+                if count > 0 then
+                  result = result .. "$0"
+                end
+                result = result:gsub("\\", "")
+                return result
+              end
+
               for _, item in ipairs(items) do
-                if item.detail and not item.detail:find("{") then
-                  -- this will not change the icon in menu completion,
-                  -- but resolve the autobrackets for commands that does not need arg
-                  item.kind = kinds.Keyword
+                if item.kind == kinds.Function then
+                  if item.detail then
+                    item.insertTextFormat = 2
+                    item.textEdit.newText = expand_braces(item.detail)
+                  end
+                elseif item.kind == kinds.Class then
+                  item.insertTextFormat = 1
+                  item.insertText = item.label
                 end
               end
             end
